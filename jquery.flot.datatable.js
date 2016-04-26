@@ -51,13 +51,13 @@ function createTable(allSeries, options, useRawValues) {
 
     T += '</tr>';
     for (N = allSeries[0].data.length, i = N-1; i >= 0; i--) {      // for each x
-        xvalue = (allSeries[0].data[i] && allSeries[0].data[i].length == 2)? allSeries[0].data[i][0] : null;
+        xvalue = (allSeries[0].data[i] && allSeries[0].data[i].length >= 2)? allSeries[0].data[i][0] : null;
         t = '<tr><td nowrap>' + xformat(xvalue) + '</td>';    // 1st colunm, x-value
         for (j = 0, M = allSeries.length; j < M; j++) {         // for each series
             if (allSeries[j].nodatatable) {
                 continue;
             }
-            yvalue = (allSeries[j].data[i] && allSeries[j].data[i].length == 2)? allSeries[j].data[i][1] : null;
+            yvalue = (allSeries[j].data[i] && allSeries[j].data[i].length >= 2)? allSeries[j].data[i][1] : null;
             t += '<td nowrap>' + yformat(yvalue) + '</td>'; // add y-data
         }
         t += '</tr>';
@@ -165,6 +165,6 @@ function init(plot) {
         init: init,
         options: options,
         name: 'datatable',
-        version: '1.0.5'
+        version: '1.0.6'
     });
 })(jQuery);
