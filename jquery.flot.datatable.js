@@ -165,6 +165,6 @@ function init(plot) {
         init: init,
         options: options,
         name: 'datatable',
-        version: '1.0.6'
+        version: '1.0.7'
     });
 })(jQuery);
