@@ -40,7 +40,11 @@ function createTable(allSeries, options, useRawValues) {
             if (allSeries[j].nodatatable) {
                 continue;
             }
-            yvalue = (allSeries[j].data[i] && allSeries[j].data[i].length >= 2)? allSeries[j].data[i][1] : null;
+            if ("originalY" in allSeries[j]) {
+                yvalue = allSeries[j].originalY[i];
+            } else { // fallback if originalY not defined (old backshift being used)
+                yvalue = (allSeries[j].data[i] && allSeries[j].data[i].length >= 2) ? allSeries[j].data[i][1] : null;
+            }
             t += '<td nowrap>' + yformat(yvalue) + '</td>'; // add y-data
         }
         t += '</tr>';
